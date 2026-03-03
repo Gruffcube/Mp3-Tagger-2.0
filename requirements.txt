@@ -1,0 +1,4 @@
+deprecation==2.1.0
+eyeD3==0.9.9
+filetype==1.2.0
+packaging==26.0
