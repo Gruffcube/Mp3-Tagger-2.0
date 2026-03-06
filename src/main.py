@@ -1,5 +1,13 @@
 from pathlib import Path
 import logging as log
+import time
+import os
+
+
+
+os.system('cls')
+
+LOG_DELETION_PERIOD = 259200
 
 CONTRIBUTERS = {
 'Gruffcube': ('Primary app developer', 'Find me on GitHub: https://github.com/Gruffcube'),
@@ -15,8 +23,10 @@ def main():
 if __name__ == '__main__':
     
     # Logging Setup
+    LOGS_PATH =  Path.home() / 'MP3_tagger_2.0_logs'
+    Path.mkdir(LOGS_PATH, exist_ok=True)
+    LOG_FILE = LOGS_PATH / f'{round(time.time())}.log'
     
-    LOG_FILE = Path.home() / 'MP3_tagger_2.0.log'
     log.basicConfig(
         level=log.INFO,
         format='%(asctime)s - %(levelname)s - %(message)s',
@@ -26,8 +36,29 @@ if __name__ == '__main__':
         ]
     )
     
+    # Remove old logs
+    
+    for log_file in LOGS_PATH.iterdir():
+        try:
+            if log_file.suffix.lower() == '.log':
+                
+                try:
+                    log_date = int(log_file.stem)
+                
+                except:
+                    continue
+                
+                if log_date + LOG_DELETION_PERIOD < time.time():
+                    os.unlink(log_file)
+                    
+                    log.info(f'Removed old log file: {log_file}')
+        
+        except:
+            log.info(f'Could not remove log file: {log_file}')
+    
     # Credits
-    log.info('Welcome to MP3 tagger 2.0.')
+    print(Path.home())
+    log.info('Welcome to MP3 tagger 2.0.\n\n')
     
     for key, value in CONTRIBUTERS.items():
         log.info(f'Contributer: {key} \nRole: {value[0]} \nContact: {value[1]}\n\n')
