@@ -2,7 +2,7 @@ Created by Gruffcube in python 3.12.6
 
 Introduction and use case ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This MP3 tagger is best used for adding album covers, ordering songs, and 
+This MP3 tagger is best used for adding album covers, indexing songs, and 
 other metadata to MP3 files that have been ripped from youtube and 
 coverted (this software does not convert or download anything - ideally 
 use software such as jdownloader 2 and VLC media player for this). The 
