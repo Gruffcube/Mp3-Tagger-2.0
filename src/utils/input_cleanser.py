@@ -2,7 +2,7 @@ from pathlib import Path
 
 
 
-SUPPORTED_IMAGE_FORMATS = {'.jpg', '.jpeg', '.png'} # NOTE: PNG support has not yet been integrated
+SUPPORTED_IMAGE_FORMATS = {'.jpg', '.jpeg'} # NOTE: PNG support is yet to be added
 
 
 
