@@ -1,7 +1,10 @@
 from pathlib import Path
 import logging as log
 
-
+CONTRIBUTERS = {
+'Gruffcube': ('Primary app developer', 'Find me on GitHub: https://github.com/Gruffcube'),
+'TheDigitalArtist': ('Created the placeholder musical note icon', 'Pixabay: https://pixabay.com/users/thedigitalartist-202249/'),
+}
 
 def main():
     pass
@@ -23,7 +26,11 @@ if __name__ == '__main__':
         ]
     )
     
-    log.info('This project was made by Gruffcube.')
+    # Credits
+    log.info('Welcome to MP3 tagger 2.0.')
+    
+    for key, value in CONTRIBUTERS.items():
+        log.info(f'Contributer: {key} \nRole: {value[0]} \nContact: {value[1]}\n\n')
     
     # Execute main()
     
