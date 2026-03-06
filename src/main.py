@@ -24,6 +24,8 @@ if __name__ == '__main__':
     
     log.info('This project was made by Gruffcube.')
     
+    # Execute main()
+    
     try:
         main()
     
