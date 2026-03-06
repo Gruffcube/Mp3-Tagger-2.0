@@ -6,3 +6,4 @@ build/
 .env
 *.spec
 *.geany
+test_data/
