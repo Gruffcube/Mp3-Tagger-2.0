@@ -3,11 +3,11 @@ import logging as log
 import time
 import os
 
+from utils import old_log_remover
 
+PROGRAM_START_TIME = time.time()
 
 os.system('cls')
-
-LOG_DELETION_PERIOD = 259200
 
 CONTRIBUTERS = {
 'Gruffcube': ('Primary app developer', 'Find me on GitHub: https://github.com/Gruffcube'),
@@ -36,25 +36,6 @@ if __name__ == '__main__':
         ]
     )
     
-    # Remove old logs
-    
-    for log_file in LOGS_PATH.iterdir():
-        try:
-            if log_file.suffix.lower() == '.log':
-                
-                try:
-                    log_date = int(log_file.stem)
-                
-                except:
-                    continue
-                
-                if log_date + LOG_DELETION_PERIOD < time.time():
-                    os.unlink(log_file)
-                    
-                    log.info(f'Removed old log file: {log_file}')
-        
-        except:
-            log.info(f'Could not remove log file: {log_file}')
     
     # Credits
     print(Path.home())
@@ -67,6 +48,10 @@ if __name__ == '__main__':
     
     try:
         main()
-    
+            
     except Exception as err:
         log.exception('An unhandled exception occured.')
+    
+    old_log_remover.remove_old_logs(PROGRAM_START_TIME, LOGS_PATH)
+    
+    
